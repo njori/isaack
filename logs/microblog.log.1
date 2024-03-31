@@ -1,0 +1,123 @@
+2024-03-19 14:29:07,990 ERROR: Exception on /favicon.ico [GET] [in C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py:828]
+Traceback (most recent call last):
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: user.last_message_read_time
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 868, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1243, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\Desktop\projectagain\app\main\routes.py", line 18, in before_request
+    if current_user.is_authenticated:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 311, in __get__
+    obj = instance._get_current_object()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\werkzeug\local.py", line 515, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\Desktop\projectagain\app\models.py", line 180, in load_user
+    return db.session.get(User, int(id))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\scoping.py", line 1060, in get
+    return self._proxied.get(
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 3637, in get
+    return self._get_impl(
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 3817, in _get_impl
+    return db_load_fn(
+           ^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\loading.py", line 694, in load_on_pk_identity
+    session.execute(
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2306, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2191, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1408, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\sql\elements.py", line 513, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1630, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1839, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1979, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 2335, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 1960, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HomePC\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\default.py", line 924, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: user.last_message_read_time
+[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen, user.last_message_read_time AS user_last_message_read_time 
+FROM user 
+WHERE user.id = ?]
+[parameters: (4,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-03-19 14:41:54,345 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 14:43:07,011 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 14:43:12,849 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 14:53:06,488 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 14:56:41,119 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:05:32,243 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:05:39,084 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:07:30,366 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:09:55,597 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:10:20,753 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:44:16,420 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:45:01,900 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 15:45:29,531 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 16:00:28,990 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-19 16:00:36,342 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-21 01:02:07,557 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:82]
+2024-03-21 20:20:49,523 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-22 16:06:37,296 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-22 16:06:45,931 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:14:16,064 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:14:22,807 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:20:22,545 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:20:50,440 INFO: Microblog startup [in C:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:21:19,602 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 13:22:02,775 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 14:04:55,081 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 14:05:24,425 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 14:06:30,521 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 14:07:26,367 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:91]
+2024-03-28 14:11:44,463 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:92]
+2024-03-28 14:12:07,085 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:94]
+2024-03-28 14:14:20,074 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:94]
+2024-03-28 14:16:52,890 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:94]
+2024-03-28 14:17:50,166 INFO: Microblog startup [in c:\Users\HomePC\Desktop\projectagain\app\__init__.py:94]
