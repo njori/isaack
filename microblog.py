@@ -10,4 +10,4 @@ app = create_app()
 def make_shell_context():
     return {'sa': sa, 'so': so, 'db': db, 'User': User, 'Post': Post,
             'Message': Message, 'Notification': Notification, 'Task': Task}
-app.run(debug=True)
+app.run(host='0.0.0.0',port=5000)
